@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#007BFF"/> <!-- Bootstrap primary color -->
+    <corners android:radius="50dp"/> <!-- To make it rounded -->
+    <padding android:left="10dp" android:top="2dp"
+        android:right="10dp" android:bottom="2dp"/> <!-- Padding around the text -->
+</shape>

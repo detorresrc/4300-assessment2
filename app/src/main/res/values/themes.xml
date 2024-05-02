@@ -1,0 +1,42 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.Assessment2" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/teal_700</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="CardView.Subhead" parent="TextAppearance.MaterialComponents.Subtitle1">
+        <item name="android:textColor">#3F51B5</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="CardView.SubheadCategory" parent="TextAppearance.MaterialComponents.Subtitle1">
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">12dp</item>
+    </style>
+
+    <style name="CardView.Question" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="android:textColor">#000000</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="CardView.Answer" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="android:textColor">#000000</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="CardView.CorrectAnswer" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="android:textColor">#C71717</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+</resources>

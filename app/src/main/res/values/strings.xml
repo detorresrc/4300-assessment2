@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Assessment 2</string>
+    <string name="reset">Reset</string>
+    <string name="view_result">View Result</string>
+    <string name="back">Back</string>
+    <string name="type_your_answer_here">Type your answer here</string>
+    <string name="results">RESULTS</string>
+    <string name="questions">QUESTIONS</string>
+</resources>
