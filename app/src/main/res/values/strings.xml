@@ -6,4 +6,7 @@
     <string name="type_your_answer_here">Type your answer here</string>
     <string name="results">RESULTS</string>
     <string name="questions">QUESTIONS</string>
+    <string name="correct_answer">Correct Answer</string>
+    <string name="incorrect_answer">Incorrect Answer</string>
+    <string name="percentage">Percentage</string>
 </resources>

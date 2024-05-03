@@ -39,4 +39,16 @@
         <item name="android:textColor">#C71717</item>
         <item name="android:textSize">12sp</item>
     </style>
+
+    <style name="Button.Warning" parent="TextAppearance.AppCompat.Button">
+        <item name="android:background">@color/yellow700</item>
+        <item name="backgroundTint">@color/yellow700</item>
+        <item name="android:textColor">#000000</item>
+    </style>
+    <style name="Button.Primary" parent="TextAppearance.AppCompat.Button">
+        <item name="android:background">@color/purple_700</item>
+        <item name="backgroundTint">@color/purple_700</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+
 </resources>

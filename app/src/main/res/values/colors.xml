@@ -8,6 +8,7 @@
     <color name="black">#FF000000</color>
     <color name="black100">#2E2A2A</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="correct_answer">#008000</color> <!-- Green -->
-    <color name="incorrect_answer">#FF0000</color> <!-- Red -->
+    <color name="green700">#008000</color>
+    <color name="red700">#FF0000</color>
+    <color name="yellow700">#ffc107</color>
 </resources>

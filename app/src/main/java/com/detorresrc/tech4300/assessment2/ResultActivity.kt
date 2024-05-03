@@ -1,5 +1,6 @@
 package com.detorresrc.tech4300.assessment2
 
+import android.annotation.SuppressLint
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -41,12 +42,13 @@ class ResultActivity : AppCompatActivity() {
                 @Suppress("DEPRECATION")
                 answers = intent.getParcelableExtra("answers")
             }
-            setupAnswers(answers)
+            setupComponents(answers)
         }
 
     }
 
-    private fun setupAnswers(answersObject: Answers?) {
+    @SuppressLint("SetTextI18n")
+    private fun setupComponents(answersObject: Answers?) {
         // Get the ConstraintLayout that will contain the questions
         val questionLayout = findViewById<LinearLayout>(R.id.questionContainer)
         // Get the LayoutInflater instance to inflate the views
@@ -71,12 +73,13 @@ class ResultActivity : AppCompatActivity() {
             questionText.text = answer.question.question
             categoryText.text = answer.question.type.toString().uppercase()
             answerText.text = answer.answer
-            correctAnswer.text = "The correct answer is : ${answer.question.correctAnswer}"
 
             if (answer.isCorrect())
                 iconCorrect.visibility = View.VISIBLE
-            else
+            else{
                 iconWrong.visibility = View.VISIBLE
+                correctAnswer.text = "The correct answer is : ${answer.question.correctAnswer}"
+            }
 
             // Create layout parameters for the CardView
             val layoutParams = LinearLayout.LayoutParams(
@@ -96,5 +99,17 @@ class ResultActivity : AppCompatActivity() {
             // Update the ID of the previous CardView
             previousCardViewId = cardView.id
         }
+
+        val stats = answersObject?.getStats()
+        val totalCorrectAnswer = findViewById<TextView>(R.id.totalCorrectAnswer)
+        totalCorrectAnswer.text = stats?.correct.toString()
+
+        val totalIncorrectAnswer = findViewById<TextView>(R.id.totalIncorrectAnswer)
+        totalIncorrectAnswer.text = stats?.incorrect.toString()
+
+        val percentage = findViewById<TextView>(R.id.percentage)
+        val percentageValue = stats?.percentage
+        percentage.text = String.format("%.2f", percentageValue)
+
     }
 }
