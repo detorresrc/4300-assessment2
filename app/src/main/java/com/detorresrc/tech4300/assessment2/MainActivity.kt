@@ -19,10 +19,22 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.detorresrc.tech4300.assessment2.lib.Answer
 import com.detorresrc.tech4300.assessment2.lib.Answers
+import com.detorresrc.tech4300.assessment2.lib.Question
 import com.detorresrc.tech4300.assessment2.lib.QuestionManager
+import com.detorresrc.tech4300.assessment2.lib.QuestionType
 
 class MainActivity : AppCompatActivity() {
-    private val questionManager = QuestionManager()
+    private var questionManager: QuestionManager = QuestionManager(listOf(
+        Question("What is 2 + 2?", "4", QuestionType.ADDITION),
+        Question("What is 1 + 2?", "3", QuestionType.ADDITION),
+        Question("What is 5 - 3?", "2", QuestionType.SUBTRACTION),
+        Question("What is 10 - 3?", "7", QuestionType.SUBTRACTION),
+        Question("What is 4 * 3?", "12", QuestionType.MULTIPLICATION),
+        Question("What is 4 * 1?", "4", QuestionType.MULTIPLICATION),
+        Question("What is 10 / 2?", "5", QuestionType.DIVISION),
+        Question("What is 15 / 5?", "3", QuestionType.DIVISION)
+    ))
+
     private var btnReset: Button? = null
     private var btnViewResults: Button? = null
     private var viewedResult: Boolean = false
@@ -117,12 +129,14 @@ class MainActivity : AppCompatActivity() {
     private fun viewResult() {
         // If the answers are valid, start the ResultActivity
         val intent = Intent(this, ResultActivity::class.java)
-        intent.putExtra("answers", Answers(questionManager.getAnswers()))
+        intent.putExtra("answers", Answers(questionManager!!.getAnswers()))
         startActivity(intent)
     }
 
     @SuppressLint("SetTextI18n")
     private fun setupQuestions() {
+
+
         // Get the ConstraintLayout that will contain the questions
         val questionLayout = findViewById<LinearLayout>(R.id.questionContainer)
         // Get the LayoutInflater instance to inflate the views

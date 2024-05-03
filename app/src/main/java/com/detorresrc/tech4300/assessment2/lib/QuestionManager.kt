@@ -1,16 +1,6 @@
 package com.detorresrc.tech4300.assessment2.lib
 
-class QuestionManager {
-    private var questions: List<Question> = listOf(
-        Question("What is 2 + 2?", "4", QuestionType.ADDITION),
-        Question("What is 1 + 2?", "3", QuestionType.ADDITION),
-        Question("What is 5 - 3?", "2", QuestionType.SUBTRACTION),
-        Question("What is 10 - 3?", "7", QuestionType.SUBTRACTION),
-        Question("What is 4 * 3?", "12", QuestionType.MULTIPLICATION),
-        Question("What is 4 * 1?", "4", QuestionType.MULTIPLICATION),
-        Question("What is 10 / 2?", "5", QuestionType.DIVISION),
-        Question("What is 15 / 5?", "3", QuestionType.DIVISION)
-    )
+class QuestionManager(private val questions: List<Question>) {
 
     private var selectedQuestions: List<Question> = listOf()
 
