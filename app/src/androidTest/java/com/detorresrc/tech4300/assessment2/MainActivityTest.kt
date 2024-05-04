@@ -20,6 +20,7 @@ import org.junit.Test
 
 class MainActivityTest {
     private lateinit var scenario: ActivityScenario<MainActivity>
+
     @Before
     fun setUp() {
         scenario = ActivityScenario.launch(MainActivity::class.java)
@@ -125,5 +126,36 @@ class MainActivityTest {
                     isDisplayed()
                 )
             )
+    }
+
+    @Test
+    fun testReset() {
+        scenario.onActivity { activity ->
+            val questionManager = activity.getQuestionManager()
+
+            assertNotNull(questionManager)
+            assertEquals(5, questionManager.getQuestions().size)
+
+            // Get All TextView element
+            val questionLayout = activity.findViewById<LinearLayout>(R.id.questionContainer)
+            assertNotNull(questionLayout)
+
+            for (i in 0 until questionLayout.childCount)
+                questionLayout.getChildAt(i).findViewById<EditText>(R.id.answer).setText((i+1).toString())
+        }
+
+        onView(withId(R.id.btnReset)).perform(click())
+        onView(withText("YES")).perform(click())
+
+        scenario.onActivity { activity ->
+            // Get All TextView element
+            val questionLayout = activity.findViewById<LinearLayout>(R.id.questionContainer)
+            assertNotNull(questionLayout)
+
+            for (i in 0 until questionLayout.childCount) {
+                val answerEditText = questionLayout.getChildAt(i).findViewById<EditText>(R.id.answer)
+                assertEquals("", answerEditText.text.toString())
+            }
+        }
     }
 }
