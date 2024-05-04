@@ -5,7 +5,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.LinearLayout
@@ -24,20 +23,11 @@ import com.detorresrc.tech4300.assessment2.lib.QuestionManager
 import com.detorresrc.tech4300.assessment2.lib.QuestionType
 
 class MainActivity : AppCompatActivity() {
-    private var questionManager: QuestionManager = QuestionManager(listOf(
-        Question("What is 2 + 2?", "4", QuestionType.ADDITION),
-        Question("What is 1 + 2?", "3", QuestionType.ADDITION),
-        Question("What is 5 - 3?", "2", QuestionType.SUBTRACTION),
-        Question("What is 10 - 3?", "7", QuestionType.SUBTRACTION),
-        Question("What is 4 * 3?", "12", QuestionType.MULTIPLICATION),
-        Question("What is 4 * 1?", "4", QuestionType.MULTIPLICATION),
-        Question("What is 10 / 2?", "5", QuestionType.DIVISION),
-        Question("What is 15 / 5?", "3", QuestionType.DIVISION)
-    ))
+    private lateinit var questionManager: QuestionManager
 
-    private var btnReset: Button? = null
-    private var btnViewResults: Button? = null
-    private var viewedResult: Boolean = false
+    private lateinit var btnReset: Button
+    private lateinit var btnViewResults: Button
+    private var viewedResult = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         // Call the superclass method
@@ -67,11 +57,21 @@ class MainActivity : AppCompatActivity() {
         }
 
         // Setup the questions for the quiz
+        questionManager = QuestionManager(listOf(
+            Question("What is 2 + 2?", "4", QuestionType.ADDITION),
+            Question("What is 1 + 2?", "3", QuestionType.ADDITION),
+            Question("What is 5 - 3?", "2", QuestionType.SUBTRACTION),
+            Question("What is 10 - 3?", "7", QuestionType.SUBTRACTION),
+            Question("What is 4 * 3?", "12", QuestionType.MULTIPLICATION),
+            Question("What is 4 * 1?", "4", QuestionType.MULTIPLICATION),
+            Question("What is 10 / 2?", "5", QuestionType.DIVISION),
+            Question("What is 15 / 5?", "3", QuestionType.DIVISION)
+        ))
         setupQuestions()
 
         // Get the reset button and set its click listener
         btnReset = findViewById(R.id.btnReset)
-        btnReset?.setOnClickListener {
+        btnReset.setOnClickListener {
             // Create an AlertDialog to confirm the reset action
             val builder = AlertDialog.Builder(this)
             builder.setTitle("Assessment 2")
@@ -90,11 +90,11 @@ class MainActivity : AppCompatActivity() {
 
         // Get the view results button and set its click listener
         btnViewResults = findViewById(R.id.btnViewResult)
-        btnViewResults?.setOnClickListener {
+        btnViewResults.setOnClickListener {
             // Validate the answers
             if(!getAndValidateAnswer()) {
                 // If the answers are not valid, show an AlertDialog
-                var builder = AlertDialog.Builder(this)
+                AlertDialog.Builder(this)
                     .setTitle("Assessment 2")
                     .setMessage("Please answer all questions before viewing results.")
                     .setNegativeButton("OK") { dialog, _ ->
@@ -107,8 +107,8 @@ class MainActivity : AppCompatActivity() {
                 if(viewedResult) {
                     viewResult()
                 }else{
-                    val builder = AlertDialog.Builder(this)
-                    builder.setTitle("Assessment 2")
+                    AlertDialog.Builder(this)
+                        .setTitle("Assessment 2")
                         .setMessage("Are you sure you want to view the result? You wont be able to change your answers.")
                         .setPositiveButton("Yes") { _, _ ->
                             disableAnswerEditTexts()
@@ -129,7 +129,7 @@ class MainActivity : AppCompatActivity() {
     private fun viewResult() {
         // If the answers are valid, start the ResultActivity
         val intent = Intent(this, ResultActivity::class.java)
-        intent.putExtra("answers", Answers(questionManager!!.getAnswers()))
+        intent.putExtra("answers", Answers(questionManager.getAnswers()))
         startActivity(intent)
     }
 
@@ -229,5 +229,9 @@ class MainActivity : AppCompatActivity() {
             // Disable the EditText
             answerEditText.isEnabled = false
         }
+    }
+
+    public fun getQuestionManager(): QuestionManager {
+        return questionManager
     }
 }
