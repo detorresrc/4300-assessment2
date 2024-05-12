@@ -22,6 +22,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:text="@string/results"
+            android:paddingTop="30dp"
             android:textColor="#000"
             android:textSize="24sp"
             android:textStyle="bold"

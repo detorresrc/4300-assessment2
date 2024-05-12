@@ -170,7 +170,7 @@ class MainActivity : AppCompatActivity() {
 
             // Add margin to the CardView
             val margin = resources.getDimensionPixelSize(R.dimen.cardview_margin)
-            layoutParams.setMargins(margin, margin, margin, margin)
+            layoutParams.setMargins(margin, 0, margin, margin)
 
             // Set the layout parameters to the CardView
             cardView.layoutParams = layoutParams

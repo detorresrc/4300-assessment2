@@ -49,6 +49,7 @@
                 <map>
                   <entry key="Duration" value="90" />
                   <entry key="Pixel_8_Pro_API_29" value="120" />
+                  <entry key="Pixel_8_Pro_API_33" value="120" />
                   <entry key="Tests" value="360" />
                 </map>
               </option>
@@ -166,6 +167,7 @@
                 <map>
                   <entry key="Duration" value="90" />
                   <entry key="Pixel_8_Pro_API_29" value="120" />
+                  <entry key="Pixel_8_Pro_API_33" value="120" />
                   <entry key="Tests" value="360" />
                 </map>
               </option>
